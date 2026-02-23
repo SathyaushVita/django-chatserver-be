@@ -9,7 +9,9 @@ SECRET_KEY = "django-insecure-^ha21r(u@l^=d)10pbph&_7g^0_8@p843!9_74@%)z8=u^)y6d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 ALLOWED_HOSTS = ['cs-apiserver01.sts.com']
-#ALLOWED_HOSTS = [ ]
+# ALLOWED_HOSTS = [ ]
+
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Application definition
 INSTALLED_APPS = [
@@ -117,36 +119,36 @@ load_dotenv()
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DATABASES = {
-'default': {
-'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.mysql'),
-'NAME': os.getenv('DB_NAME'),
-'USER': os.getenv('DB_USER'),
-'PASSWORD': os.getenv('DB_PASSWORD'),
-'HOST': os.getenv('DB_HOST'),
-'PORT': os.getenv('DB_PORT'),
-'OPTIONS': {
-'charset': 'utf8mb4',
-'ssl': {
-'ca': os.path.join(BASE_DIR, 'certs', 'BaltimoreCyberTrustRoot.crt.pem'),
-}
-},
-},
+    'default': {
+    'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.mysql'),
+    'NAME': os.getenv('DB_NAME'),
+    'USER': os.getenv('DB_USER'),
+    'PASSWORD': os.getenv('DB_PASSWORD'),
+    'HOST': os.getenv('DB_HOST'),
+    'PORT': os.getenv('DB_PORT'),
+    'OPTIONS': {
+    'charset': 'utf8mb4',
+    'ssl': {
+    'ca': os.path.join(BASE_DIR, 'certs', 'BaltimoreCyberTrustRoot.crt.pem'),
+    }
+    },
+    },
 
-'gramadevata_updated1': {
-'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.mysql'),
-'NAME': os.getenv('DB2_NAME'),
-'USER': os.getenv('DB2_USER'),
-'PASSWORD': os.getenv('DB2_PASSWORD'),
-'HOST': os.getenv('DB2_HOST'),
-'PORT': os.getenv('DB2_PORT'),
-'OPTIONS': {
-'charset': 'utf8mb4',
-'ssl': {
-'ca': os.path.join(BASE_DIR, 'certs', 'BaltimoreCyberTrustRoot.crt.pem'),
-}
-},
-}
-}
+    'gramadevata_updated1': {
+    'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.mysql'),
+    'NAME': os.getenv('DB2_NAME'),
+    'USER': os.getenv('DB2_USER'),
+    'PASSWORD': os.getenv('DB2_PASSWORD'),
+    'HOST': os.getenv('DB2_HOST'),
+    'PORT': os.getenv('DB2_PORT'),
+    'OPTIONS': {
+    'charset': 'utf8mb4',
+    'ssl': {
+    'ca': os.path.join(BASE_DIR, 'certs', 'BaltimoreCyberTrustRoot.crt.pem'),
+    }
+    },
+    }
+    }
 
 DATABASE_ROUTERS = ['backend.db_routers.RegisterRouter']
 # Password validation
