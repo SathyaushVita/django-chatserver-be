@@ -109,36 +109,45 @@ load_dotenv()
 #         'PORT': os.getenv('DB2_PORT'),
 #     }
 # }
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DATABASES = {
-    'default': {
-        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.mysql'),
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
-        'OPTIONS': {
-            'charset': os.getenv('DB_OPTIONS_CHARSET', 'utf8mb4'),
-            'ssl': {
-                'ca': os.getenv('DB_SSL_CA'),  # Absolute path to MySQL CA cert
-            },
-        },
-    },
-    'gramadevata_updated1': {
-        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.mysql'),
-        'NAME': os.getenv('DB2_NAME'),
-        'USER': os.getenv('DB2_USER'),
-        'PASSWORD': os.getenv('DB2_PASSWORD'),
-        'HOST': os.getenv('DB2_HOST'),
-        'PORT': os.getenv('DB2_PORT'),
-        'OPTIONS': {
-            'ssl': {
-                'ca': os.getenv('DB2_SSL_CA'),
-            },
-        },
-    }
+'default': {
+'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.mysql'),
+'NAME': os.getenv('DB_NAME'),
+'USER': os.getenv('DB_USER'),
+'PASSWORD': os.getenv('DB_PASSWORD'),
+'HOST': os.getenv('DB_HOST'),
+'PORT': os.getenv('DB_PORT'),
+'OPTIONS': {
+'charset': 'utf8mb4',
+'ssl': {
+'ca': os.path.join(BASE_DIR, 'certs', 'BaltimoreCyberTrustRoot.crt.pem'),
 }
+},
+},
+
+'gramadevata_updated1': {
+'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.mysql'),
+'NAME': os.getenv('DB2_NAME'),
+'USER': os.getenv('DB2_USER'),
+'PASSWORD': os.getenv('DB2_PASSWORD'),
+'HOST': os.getenv('DB2_HOST'),
+'PORT': os.getenv('DB2_PORT'),
+'OPTIONS': {
+'charset': 'utf8mb4',
+'ssl': {
+'ca': os.path.join(BASE_DIR, 'certs', 'BaltimoreCyberTrustRoot.crt.pem'),
+}
+},
+}
+}
+
 DATABASE_ROUTERS = ['backend.db_routers.RegisterRouter']
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
